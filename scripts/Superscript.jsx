@@ -3779,6 +3779,9 @@
               for (var i = 0; i < this.CONFIG.ABREVIATIONS_NUMEROS.length; i++) {
                   if (this.CONFIG.ABREVIATIONS_NUMEROS[i].indexOf("\\.") !== -1) {
                       abreviationsPrecises.push(this.CONFIG.ABREVIATIONS_NUMEROS[i]);
+                  } else if (this.CONFIG.ABREVIATIONS_NUMEROS[i].indexOf("°") !== -1) {
+                      // Cas spécial pour n° et n°s - pas de \b à la fin
+                      abreviationsPrecises.push("\\b" + this.CONFIG.ABREVIATIONS_NUMEROS[i]);
                   } else {
                       abreviationsPrecises.push("\\b" + this.CONFIG.ABREVIATIONS_NUMEROS[i] + "\\b");
                   }
